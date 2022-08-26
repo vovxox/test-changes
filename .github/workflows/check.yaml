@@ -26,6 +26,7 @@ jobs:
 
       - name: Collect changes
         run: |
+          echo ${{ steps.changed-files.outputs.all_modified_files }}
           PATHS='${{ steps.changed-files.outputs.all_modified_files }}'
           OUTPUT=$(echo $PATHS | jq --raw-output -c 'map(. |= split("/")[1]) | unique')
           echo ${OUTPUT}
