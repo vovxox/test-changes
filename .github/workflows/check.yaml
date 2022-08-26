@@ -26,7 +26,8 @@ jobs:
 
       - name: Collect changes
         run: |
-          echo ${{ steps.changed-files.outputs.all_modified_files }}
+          qda=$(echo ${{ steps.changed-files.outputs.all_modified_files }} | cut -f2 -d'/')
+          echo $qda
           # changes=$(echo ${{ steps.changed-files.outputs.all_modified_files }} | jq -R 'split (" ")');
           # service=$(echo $changes | jq --raw-output -c 'map(. |= split("/")[1]) | unique')
           # echo ${service}
